@@ -9,7 +9,7 @@ jobs:
   django-test:
     runs-on: ubuntu-22.04
     env:
-      SECRET_KEY: ${{ secret.SECRET_KEY }} #Названия переменных взято с github/actions
+      SECRET_KEY: ${{ secret.SECRET_KEY }}
       DEBUG: "0"
       ALLOWED_HOSTS: ${{ secret.ALLOWED_HOSTS }}
       DB_ENGINE: ${{ secret.DB_ENGINE }}
