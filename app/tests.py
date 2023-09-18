@@ -1,3 +1,10 @@
-from django.test import TestCase
+from unittest import TestCase
 
-# Create your tests here.
+from rest_framework.test import APIClient
+
+class TestSomething(TestCase):
+    def test_sample_view(self):
+        client = APIClient()
+        URL = '/current_time/'
+        response = client.get(URL)
+        assert response.status_code == 200
