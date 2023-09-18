@@ -9,18 +9,18 @@ jobs:
   django-test:
     runs-on: ubuntu-22.04
     env:
-      SECRET_KEY: ${{ secret.SECRET_KEY }} #Названия переменных взято с github/actions
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
       DEBUG: "0"
-      ALLOWED_HOSTS: ${{ secret.ALLOWED_HOSTS }}
-      DB_ENGINE: ${{ secret.DB_ENGINE }}
-      DATABASE_USER: ${{ secret.DB_USER }}
-      DB_PASSWORD: ${{ secret.DB_PASSWORD }}
-      DB_NAME: ${{ secret.DB_NAME }}
-      DB_HOST: ${{ secret.DB_HOST }}
-      DB_PORT: ${{ secret.DATABASE_PORT }}
+      ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+      DB_ENGINE: ${{ secrets.DB_ENGINE }}
+      DATABASE_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_HOST: ${{ secrets.DB_HOST }}
+      DB_PORT: ${{ secrets.DATABASE_PORT }}
     services:
       postgres_main:
-        image: postgres:12
+        image: postgres:14
         env:
           POSTGRES_DB: ${{ env.DB_NAME }}
           POSTGRES_USER: ${{ env.DATABASE_USER }}
@@ -55,5 +55,5 @@ jobs:
           DB_NAME: ${{ env.DB_NAME }}
           DB_HOST: ${{ env.DB_HOST }}
           DB_PORT: ${{ env.DB_PORT }}
-#      - name: Деплой
-#        uses:
+      - name: Деплой
+        uses:
